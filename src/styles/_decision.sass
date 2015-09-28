@@ -1,0 +1,72 @@
+.Decision
+  width: 100%
+  height: 400px
+  background-color: $cyan
+  perspective: 200px
+
+.Decision-item
+  position: absolute
+
+  width: 50%
+  padding: 10% 0
+
+  // box-sizing: border-box
+  // display: box
+  // box-orient: horizontal
+  // box-pack: center
+  // box-align: center
+  
+  // border: 1px solid #797982
+  background-color: #C6C7CA
+
+  font-size: 42px
+  font-weight: bold
+  color: #F8F8F8
+  text-transform: uppercase
+  text-align: center
+  vertical-align: middle
+
+  transition: all 300ms
+
+.Decision-left:hover
+  width: 80%
+.Decision-left.dismissed
+  transform: rotateY(-10deg)
+  width: 20%
+
+.Decision-right:hover
+  width: 80%
+.Decision-right.dismissed
+  transform: rotateY(10deg)
+  width: 20%
+
+
+.Decision-left
+  float: left
+  left: 0
+  // transform: rotateY(30deg)
+  // perspective-origin: right
+  transform-origin: right
+
+.Decision-right
+  right: 0
+  float: right
+  // transform: rotateY(30deg)
+  transform-origin: left
+
+.Options
+  list-style-type: decimal
+  padding: 0
+  margin: 0
+  background-color: $blue 
+  li
+    text-align: left
+    background-color: $blue 
+    color: $white
+    border-bottom: 2 solid $white
+    padding: 0.2em 0.4em
+    margin: 0
+    a
+      color: $white
+      span
+        content: "\e609"

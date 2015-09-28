@@ -1,0 +1,49 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    |         
+    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+    // Set the viewport to show the page at a scale of 1.0, and make it non-scalable
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    // Make it fullscreen / hide the browser URL bar
+    meta(name='apple-mobile-web-app-capable', content='yes')
+    //
+      Give the status bar another colour
+      Valid values for "content" are: "default" (white), "black" and "black-translucent"
+      If set to "default" or "black", the content is displayed below the status bar. If set to
+      "black-translucent", the content is displayed under the bar.
+    meta(name='apple-mobile-web-app-status-bar-style', content='black-translucent')
+    |         
+    meta(name='apple-mobile-web-app-title', content='decyde it')
+    //
+      <meta name="format-detection" content="telephone=no" />
+      <meta name="format-detection" content="date=no" />
+    title Astronavigation
+    |         
+    script(src='js/head.js')
+    // <link rel="stylesheet" type="text/css" href="//cloud.typography.com/6610232/635462/css/fonts.css" />
+    // <link rel="stylesheet" href="css/app.css" />
+    style.
+      body { margin: 0; overflow: hidden; background-color: #000; }
+      .tm  { position: absolute; top: 10px; right: 10px; }
+      .webgl-error { font: 15px/30px monospace; text-align: center; color: #fff; margin: 50px; }
+      .webgl-error a { color: #fff; }
+  |     
+  body
+    main.Main
+      #World
+    footer.Footer
+      | handcoded by 
+      a(href='http://kopfwelt.com') KOPFWELT
+
+
+    #webgl
+    |         
+    script(src='js/main.js')
+    //
+      <script src="javascript/three.min.js"></script>
+      <script src="javascript/Detector.js"></script>
+      <script src="javascript/TrackballControls.js"></script>
+      <script src="javascript/earth.js"></script>
+

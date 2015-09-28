@@ -1,0 +1,879 @@
+//colors
+$white: #fff
+$color_moon_glow_approx: #fffed8
+$color_cape_cod_approx: #3b3f45
+$black_10: rgba(0,0,0,0.1)
+$black_40: rgba(0,0,0,0.4)
+$color_pale_sky_approx: #6a7b7e
+$black_20: rgba(0,0,0,0.2)
+$black_50: rgba(0,0,0,0.5)
+$black_80: rgba(0,0,0,0.8)
+$color_baltic_sea_approx: #292c30
+$color_shark_approx: #232529
+$black_30: rgba(0,0,0,0.3)
+$color_froly_approx: #eb7e7f
+
+//fonts
+$font_0: Georgia
+$font_1: serif
+$font_2: Helvetica Neue
+$font_3: Helvetica
+$font_4: Arial
+$font_5: sans-serif
+
+//@extend-elements
+//original selectors
+//.fs-form-overview .fs-fields > li, .no-js .fs-form .fs-fields > li
+%extend_1 
+	margin: 1em 0 2em
+	padding: 0 0 2em 0
+	border-bottom: 2px solid $black_10
+
+
+//original selectors
+//.fs-form-full .fs-fields > li label:hover ~ .fs-info, .fs-form-full .fs-fields > li .fs-info:hover
+%extend_2 
+	opacity: 1
+	//If you use compass, instead of the line below you could use +transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+	transform: translateY(0)
+	pointer-events: auto
+
+
+//original selectors
+//.fs-nav-dots button::before, .fs-nav-dots button::after
+%extend_3 
+	position: absolute
+	top: 0
+	left: 0
+	width: 100%
+	height: 100%
+	//If you use compass, instead of the line below you could use +border-radius($radius, $vertical-radius)
+	border-radius: 50%
+	background-color: $black_50
+	content: ''
+	text-indent: 0
+	//If you use compass, instead of the line below you could use +backface-visibility($visibility)
+	backface-visibility: hidden
+
+
+//original selectors
+//button.fs-submit, button.fs-continue
+%extend_4 
+	padding: 0.6em 1.5em
+	border: 3px solid $color_shark_approx
+	//If you use compass, instead of the line below you could use +border-radius($radius, $vertical-radius)
+	border-radius: 40px
+	font-weight: 700
+	color: $black_40
+
+
+
+.fs-form-wrap 
+	position: relative
+	width: 100%
+	height: 100%
+	color: $white
+	button 
+		border: none
+		background: none
+		&:focus 
+			outline: none
+
+
+	button[disabled] 
+		opacity: 0.3
+		pointer-events: none
+
+	input:focus 
+		outline: none
+
+
+.fs-title 
+	position: absolute
+	top: 0
+	left: 0
+	margin: 0
+	padding: 40px
+	width: 100%
+	h1 
+		margin: 0
+
+
+.fs-form 
+	position: relative
+	text-align: left
+	font-size: 2.5em
+	&.fs-show 
+		animation: animFadeIn 0.5s
+		.fs-fields 
+			animation: animMove 0.5s
+
+
+	.fs-submit 
+		display: none
+
+	li 
+		&.fs-current 
+			visibility: visible
+
+		&.fs-hide 
+			pointer-events: none
+
+		&.fs-show 
+			pointer-events: none
+
+
+	.fs-display-next 
+		.fs-hide 
+			visibility: visible
+			.fs-anim-lower 
+				animation: animHideNext 0.5s cubic-bezier(0.7,0,0.3,1) forwards
+				animation-delay: 0.1s
+
+			.fs-anim-upper 
+				animation: animHideNext 0.5s cubic-bezier(0.7,0,0.3,1) forwards
+
+
+		.fs-show 
+			.fs-anim-lower 
+				animation: animShowNext 0.5s cubic-bezier(0.7,0,0.3,1) both 0.15s
+				animation-delay: 0.25s
+
+			.fs-anim-upper 
+				animation: animShowNext 0.5s cubic-bezier(0.7,0,0.3,1) both 0.15s
+
+
+
+	.fs-display-prev 
+		.fs-hide 
+			visibility: visible
+			.fs-anim-lower 
+				animation: animHidePrev 0.5s cubic-bezier(0.7,0,0.3,1) forwards
+
+			.fs-anim-upper 
+				animation: animHidePrev 0.5s cubic-bezier(0.7,0,0.3,1) forwards
+				animation-delay: 0.1s
+
+
+		.fs-show 
+			.fs-anim-lower 
+				animation: animShowPrev 0.5s cubic-bezier(0.7,0,0.3,1) both 0.15s
+
+			.fs-anim-upper 
+				animation: animShowPrev 0.5s cubic-bezier(0.7,0,0.3,1) both 0.15s
+				animation-delay: 0.25s
+
+
+
+	div.cs-select.cs-skin-boxes 
+		display: block
+
+
+.no-js 
+	.fs-form 
+		padding: 0 0 6em 0
+		.fs-submit 
+			display: block
+			float: right
+
+		.fs-fields > li 
+			@extend %extend_1
+
+
+	.fs-form-full .fs-fields > li 
+		visibility: visible
+
+
+.fs-form-full 
+	top: 32%
+	margin: 0 auto
+	width: 70%
+	max-width: 960px
+	.fs-fields > li 
+		visibility: hidden
+		label[data-info] 
+			&::after 
+				position: relative
+				display: inline-block
+				margin-left: 10px
+				width: 24px
+				height: 24px
+				border: 2px solid $black_40
+				color: $black_40
+				//If you use compass, instead of the line below you could use +border-radius($radius, $vertical-radius)
+				border-radius: 50%
+				content: 'i'
+				vertical-align: top
+				text-align: center
+				font-weight: 700
+				font-style: italic
+				font-size: 14px
+				font-family: $font_0, $font_1
+				line-height: 20px
+				cursor: pointer
+				pointer-events: auto
+
+			&::before 
+				position: absolute
+				bottom: 100%
+				left: 0
+				padding: 0 0 10px
+				min-width: 200px
+				content: attr(data-info)
+				font-size: 0.4em
+				color: $color_pale_sky_approx
+				opacity: 0
+				//If you use compass, instead of the line below you could use +transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+				transition: opacity 0.3s, transform 0.3s
+				//If you use compass, instead of the line below you could use +transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+				transform: translate3d(0,-5px,0)
+				pointer-events: none
+
+			&:hover::before 
+				opacity: 1
+				//If you use compass, instead of the line below you could use +transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+				transform: translate3d(0,0,0)
+
+
+		label:hover ~ .fs-info 
+			@extend %extend_2
+
+		.fs-info:hover 
+			@extend %extend_2
+
+
+
+.fs-message-error 
+	max-width: 960px
+	visibility: hidden
+	position: absolute
+	bottom: 75%
+	left: 50%
+	z-index: 800
+	max-width: 960px
+	width: 70%
+	color: $color_froly_approx
+	font-weight: 700
+	font-size: 1em
+	opacity: 0
+	//If you use compass, instead of the line below you could use +transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+	transform: translate3d(-50%,-5px,0)
+	&.fs-show 
+		opacity: 1
+		//If you use compass, instead of the line below you could use +transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+		transition: transform 0.3s, opacity 0.3s
+		//If you use compass, instead of the line below you could use +transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: translate3d(-50%,0,0)
+
+
+.fs-form-overview 
+	padding: 2.5em 30% 6em
+	width: 100%
+	height: 100%
+	background: $color_moon_glow_approx
+	color: $color_cape_cod_approx
+	font-size: 1.2em
+	.fs-fields 
+		&::before 
+			display: block
+			margin-bottom: 2.5em
+			color: $color_cape_cod_approx
+			content: 'Review & Submit'
+			font-weight: 700
+			font-size: 1.85em
+
+		input 
+			border-bottom-color: transparent
+			color: $black_50
+			font-size: 1.2em
+			&:focus 
+				background-color: $color_moon_glow_approx
+
+
+		textarea 
+			height: 100px
+			color: $black_50
+			padding: 0
+			border-color: transparent
+			&:focus 
+				background: $color_moon_glow_approx
+
+
+		> li 
+			@extend %extend_1
+			.fs-radio-custom span 
+				max-width: 140px
+				font-size: 75%
+
+
+		.fs-radio-custom input[type="radio"]:checked + label 
+			color: $black_80
+
+
+	ol 
+		max-width: 100%
+
+	.fs-submit 
+		display: block
+		float: right
+		border-color: $color_shark_approx
+		color: $color_shark_approx
+
+	.cs-skin-boxes > span 
+		//If you use compass, instead of the line below you could use +border-radius($radius, $vertical-radius)
+		border-radius: 5px
+		width: 90px
+		height: 70px
+		font-size: 0.8em
+		&::before 
+			padding-top: 50px
+			//If you use compass, instead of the line below you could use +box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+			box-shadow: 0 20px 0 $color_baltic_sea_approx, inset 0 -5px $color_baltic_sea_approx
+
+
+
+@-webkit-keyframes animFadeIn 
+	0% 
+		opacity: 0
+
+	100% 
+		opacity: 1
+
+
+@keyframes animFadeIn 
+	0% 
+		opacity: 0
+
+	100% 
+		opacity: 1
+
+
+@-webkit-keyframes animMove 
+	from 
+		top: 100px
+
+
+@keyframes animMove 
+	from 
+		top: 100px
+
+
+.fs-nav-dots 
+	visibility: hidden
+	position: absolute
+	top: 50%
+	right: 60px
+	left: auto
+	//If you use compass, instead of the line below you could use +transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+	transform: translateY(-50%)
+	button 
+		position: relative
+		display: block
+		padding: 0
+		margin: 16px 0
+		width: 16px
+		height: 16px
+		//If you use compass, instead of the line below you could use +border-radius($radius, $vertical-radius)
+		border-radius: 50%
+		background: transparent
+		//If you use compass, instead of the line below you could use +transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+		transition: transform 0.3s ease, opacity 0.3s ease
+		&::before 
+			@extend %extend_3
+
+		&::after 
+			@extend %extend_3
+			background-color: $black_40
+			//If you use compass, instead of the line below you could use +transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+			transform: perspective(1000px) rotate3d(0,1,0,180deg)
+
+		&.fs-dot-current 
+			//If you use compass, instead of the line below you could use +transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+			transform: perspective(1000px) rotate3d(0,1,0,180deg)
+			&::before 
+				background: $color_moon_glow_approx
+
+
+		&:hover::before 
+			background: $color_moon_glow_approx
+
+
+
+.fs-progress 
+	visibility: hidden
+	position: absolute
+	top: 0
+	width: 0
+	height: 0.5em
+	background: $color_moon_glow_approx
+	//If you use compass, instead of the line below you could use +transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+	transition: width 0.3s ease-in-out
+
+.fs-numbers 
+	visibility: hidden
+	position: absolute
+	top: 0
+	right: 0
+	overflow: hidden
+	color: $black_40
+	margin: 40px
+	width: 2em
+	font-weight: 700
+	font-size: 2em
+	font-family: $font_2, $font_3, $font_4, $font_5
+	cursor: default
+	&:after 
+		position: absolute
+		width: 100%
+		text-align: center
+		content: '/'
+		font-weight: 300
+		opacity: 0.4
+		left: 0
+
+	span 
+		float: right
+		width: 40%
+		text-align: center
+
+	.fs-number-current 
+		float: left
+
+	.fs-number-new 
+		position: absolute
+		left: 0
+		//If you use compass, instead of the line below you could use +transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: translateY(100%)
+
+	&.fs-show-next 
+		.fs-number-new 
+			animation: animMoveUpFromDown 0.4s both
+
+		.fs-number-current 
+			animation: animMoveUp 0.4s both
+
+
+	&.fs-show-prev 
+		.fs-number-new 
+			animation: animMoveDownFromUp 0.4s both
+
+		.fs-number-current 
+			animation: animMoveDown 0.4s both
+
+
+
+button 
+	&.fs-continue 
+		visibility: hidden
+		@extend %extend_4
+		position: absolute
+		right: 0
+		bottom: 0
+		margin: 0 40px 60px 0
+		font-size: 1.25em
+		&:hover 
+			background: $color_shark_approx
+			color: $white
+
+
+	&.fs-submit 
+		@extend %extend_4
+		&:hover 
+			background: $color_shark_approx
+			color: $white
+
+		&:focus 
+			background: $color_shark_approx
+			color: $white
+
+
+
+.fs-message-final 
+	visibility: hidden
+
+.fs-show 
+	visibility: visible !important
+
+.fs-fields 
+	position: relative
+	margin: 0 auto
+	padding: 0
+	top: 0
+	list-style: none
+	input 
+		display: block
+		margin: 0
+		padding: 0 0 0.15em
+		width: 100%
+		border: none
+		border-bottom: 2px solid $black_20
+		background-color: transparent
+		color: $color_moon_glow_approx
+		text-overflow: ellipsis
+		font-weight: bold
+		font-size: 1.5em
+		//If you use compass, instead of the line below you could use +border-radius($radius, $vertical-radius)
+		border-radius: 0
+		&:invalid 
+			//If you use compass, instead of the line below you could use +box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+			box-shadow: none
+
+		&:focus 
+			background-color: $color_cape_cod_approx
+			&::-webkit-input-placeholder 
+				color: transparent
+
+
+		&.fs-mark 
+			padding-left: 1em
+			background-image: url(../img/dollar.svg)
+			background-position: 0 0.15em
+			background-size: auto 75%
+			background-repeat: no-repeat
+
+		&.fs-mark[required] 
+			background-image: url(../img/dollar.svg), url(../img/abacusstar.svg)
+			background-position: 0 0.15em, top right
+			background-size: auto 75%, 18px
+			background-repeat: no-repeat
+
+		&::-webkit-input-placeholder 
+			color: $black_10
+
+		&:-moz-placeholder 
+			color: $black_10
+
+		&::-moz-placeholder 
+			color: $black_10
+
+		&:-ms-input-placeholder 
+			color: $black_10
+
+
+	[required] 
+		background-image: url(../img/abacusstar.svg)
+		background-position: top right
+		background-size: 18px
+		background-repeat: no-repeat
+
+	.fs-radio-custom 
+		input[type="radio"] 
+			position: absolute
+			display: block
+			margin: 0 auto 20px
+			width: 100%
+			height: 100%
+			opacity: 0
+			cursor: pointer
+			&:checked + label 
+				color: $color_moon_glow_approx
+
+
+		label 
+			&::after 
+				position: absolute
+				top: 50%
+				left: 50%
+				width: 100%
+				height: 100%
+				background-position: 50% 0
+				background-size: 85%
+				background-repeat: no-repeat
+				content: ''
+				opacity: 0.5
+				//If you use compass, instead of the line below you could use +transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+				transition: opacity 0.2s
+				//If you use compass, instead of the line below you could use +transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+				transform: translate(-50%,-50%)
+
+			&.radio-mobile::after 
+				background-image: url(../img/mobile.svg)
+
+			&.radio-social::after 
+				background-image: url(../img/social.svg)
+
+			&.radio-conversion::after 
+				background-image: url(../img/conversion.svg)
+
+			&:hover::after 
+				opacity: 1
+
+
+
+	input[type="radio"] 
+		&:focus + label::after 
+			opacity: 1
+
+		&:checked + label::after 
+			opacity: 1
+
+
+	textarea 
+		padding: 0.25em
+		width: 100%
+		height: 200px
+		border: 2px solid $black_20
+		background-color: transparent
+		color: $color_moon_glow_approx
+		font-weight: 700
+		font-size: 0.85em
+		resize: none
+		&:focus 
+			outline: none
+
+		&::-webkit-input-placeholder 
+			color: $black_10
+
+		&:-moz-placeholder 
+			color: $black_10
+
+		&::-moz-placeholder 
+			color: $black_10
+
+		&:-ms-input-placeholder 
+			color: $black_10
+
+
+	> li 
+		position: relative
+		z-index: 1
+		margin: 0
+		padding: 0
+		border: none
+		&:hover 
+			z-index: 999
+
+		label 
+			position: relative
+			&.fs-field-label 
+				display: inline-block
+				padding: 0 5px 1em 0
+				font-weight: 700
+				pointer-events: none
+
+
+		.fs-radio-custom 
+			span 
+				float: left
+				position: relative
+				margin-right: 3%
+				padding: 10px
+				max-width: 200px
+				width: 30%
+				text-align: center
+				font-weight: 700
+				font-size: 50%
+				font-family: $font_2, $font_3, $font_4, $font_5
+				label 
+					color: $black_40
+					//If you use compass, instead of the line below you could use +transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+					transition: color 0.3s
+
+
+			label 
+				display: block
+				padding-top: 100%
+				width: 100%
+				height: 100%
+				cursor: pointer
+
+
+
+
+@-webkit-keyframes animMoveUpFromDown 
+	from 
+
+	to 
+
+
+@keyframes animMoveUpFromDown 
+	from 
+		//If you use compass, instead of the line below you could use +transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: translateY(100%)
+
+	to 
+		//If you use compass, instead of the line below you could use +transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: translateY(0)
+
+
+@-webkit-keyframes animMoveUp 
+	to 
+
+
+@keyframes animMoveUp 
+	to 
+		//If you use compass, instead of the line below you could use +transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: translateY(-100%)
+
+
+@-webkit-keyframes animMoveDownFromUp 
+	from 
+
+	to 
+
+
+@keyframes animMoveDownFromUp 
+	from 
+		//If you use compass, instead of the line below you could use +transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: translateY(-100%)
+
+	to 
+		//If you use compass, instead of the line below you could use +transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: translateY(0)
+
+
+@-webkit-keyframes animMoveDown 
+	to 
+
+
+@keyframes animMoveDown 
+	to 
+		//If you use compass, instead of the line below you could use +transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: translateY(100%)
+
+
+@-webkit-keyframes animHideNext 
+	to 
+		opacity: 0
+
+
+@keyframes animHideNext 
+	to 
+		opacity: 0
+		//If you use compass, instead of the line below you could use +transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: translate3d(0,-500px,0)
+
+
+@-webkit-keyframes animShowNext 
+	from 
+		opacity: 0
+
+
+@keyframes animShowNext 
+	from 
+		opacity: 0
+		//If you use compass, instead of the line below you could use +transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: translate3d(0,500px,0)
+
+
+@-webkit-keyframes animHidePrev 
+	to 
+		opacity: 0
+
+
+@keyframes animHidePrev 
+	to 
+		opacity: 0
+		//If you use compass, instead of the line below you could use +transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: translate3d(0,500px,0)
+
+
+@-webkit-keyframes animShowPrev 
+	from 
+		opacity: 0
+
+
+@keyframes animShowPrev 
+	from 
+		opacity: 0
+		//If you use compass, instead of the line below you could use +transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: translate3d(0,-500px,0)
+
+
+@media screen and(max-width: 52.5em) 
+	body 
+		min-height: 500px
+
+	.fs-form-wrap 
+		font-size: 70%
+
+	.fs-form 
+		top: 6em
+		right: 2em
+		left: 0
+		padding: 0 3.75em 0 1em
+		width: auto
+		font-size: 2em
+		&.fs-form-overview 
+			top: 0
+			right: 0
+			padding: 1.5em 1em 8em 1em
+			font-size: 1.5em
+
+
+	.fs-title 
+		padding: 20px
+
+	.fs-numbers 
+		margin: 20px
+
+	.fs-nav-dots 
+		right: 25px
+
+	button 
+		&.fs-continue 
+			right: 20px
+			bottom: 20px
+			margin: 0
+			padding: 50px 0 0 50px
+			width: 50px
+			height: 50px
+			//If you use compass, instead of the line below you could use +border-radius($radius, $vertical-radius)
+			border-radius: 50%
+			font-size: 2em
+			&::before 
+				position: absolute
+				top: 0
+				left: 0
+				width: 100%
+				height: 100%
+				content: '\27A1'
+				text-align: center
+				font-size: 1em
+				line-height: 50px
+
+
+		&.fs-submit 
+			width: 100%
+			font-size: 1.25em
+
+
+	.fs-message-error 
+		bottom: 1.75em
+		left: 0
+		padding: 0 90px 0 2em
+		width: 100%
+		font-size: 1.5em
+		//If you use compass, instead of the line below you could use +transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: translate3d(0,-5px,0)
+		&.fs-show 
+			//If you use compass, instead of the line below you could use +transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+			transform: translate3d(0,0,0)
+
+
+	.fs-continue::after 
+		content: ''
+
+
+.overview .fs-form-wrap 
+	height: auto
+
+.js .fs-form-full .fs-fields > li 
+	position: absolute
+	width: 100%
+
+.fs-continue::after 
+	position: absolute
+	top: 100%
+	left: 0
+	width: 100%
+	line-height: 3
+	text-align: center
+	background: transparent
+	color: $black_30
+	content: 'or press ENTER'
+	font-size: 0.65em
+	pointer-events: none
+
+input[type=text]::-ms-clear 
+	display: none

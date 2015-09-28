@@ -1,0 +1,75 @@
+.Form
+  width: 60vw
+  margin: 0 auto
+  padding: 0
+  border: 0
+
+.Form--name
+  display: inline-block
+  margin-top: 7px
+  // text-align: center
+  min-width: 300px
+  vertical-align: top
+  // width: calc(100% - 400px)
+
+.InputBox
+  display: inline-block
+  // min-width: 300px
+  padding: 0 5px
+  // width: calc(100% - 200px)
+  background: transparent
+  border-top: 0
+  border-right: 0
+  border-bottom: $border solid lighten($gray, 6%) 
+  // #4F5261
+  border-left: 0
+
+input::-webkit-input-placeholder
+  color: lighten($gray, 6%)
+input:placeholder
+  color: lighten($gray, 6%)
+
+// ::-webkit-input-placeholder
+//   color: lighten($gray, 6%)
+
+// :-moz-placeholder
+//   color: lighten($gray, 6%)
+
+// ::-moz-placeholder
+//   color: lighten($gray, 6%)
+
+// :-ms-input-placeholder
+//   color: lighten($gray, 6%)
+
+.Form-tag
+  @extend %font-serif
+  font-size: 2rem
+  // min-width: 18px
+  overflow: hidden
+  padding: 0 1%
+  // text-align: center
+  text-overflow: ellipsis
+  white-space: nowrap
+  // width: 30%
+  float: left
+  margin: 3px 2px 2px -2px
+  padding-left: 10px
+  padding-right: 10px
+  // background-color: #4d90fe !important
+  // border-color: #3079ed !important
+  color: $red
+
+
+.Input--ghost
+  background: transparent
+  border: 0
+
+.Input--ghost
+  // width: 100%
+  // width: calc(100% - 400px)
+  color: white
+  @extend %font-serif
+  font-size: 2rem
+  &:focus
+    // border-bottom: 2px solid #585B6C
+    outline: 0
