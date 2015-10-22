@@ -33,7 +33,7 @@ module.exports = function(config) {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
       './tests/unit/tests/*.js': [ 'browserify' ],
-      '../../src/scripts/moin.js': [ 'coverage' ]
+      '../../src/scripts/**/*.js': [ 'coverage' ]
     },
 
 
@@ -74,6 +74,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
+    // ['Firefox', 'Chrome', 'Opera', 'Safari', 'PhantomJS']
     browsers: ['Firefox', 'Chrome', 'Opera', 'Safari', 'PhantomJS'],
 
 

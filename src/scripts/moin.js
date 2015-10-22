@@ -1,5 +1,6 @@
-module.exports = {
-	steve: function(number) {
+module.exports = class Moin {
+
+	steve(number) {
 		return number + 1;
 	}
-}
+};
