@@ -1,5 +1,5 @@
 {
-  "name": "stack-backbone",
+  "name": "stack-gulp",
   "version": "0.1.0",
   "author": "Steve Sinnwell",
   "description": "Gulp stack",
@@ -11,7 +11,7 @@
     "production": "gulp build:production && gulp server",
     "gulp": "gulp",
     "development": "gulp",
-    "test": "karma start"
+    "test": "karma start tests/unit/karma.conf.js"
   },
   "browserify": {
     "transform": [
@@ -27,13 +27,16 @@
     "karma-browserify": "^4.4.0",
     "karma-chai": "^0.1.0",
     "karma-chai-sinon": "^0.1.5",
+    "karma-chrome-launcher": "^0.2.1",
     "karma-coverage": "^0.5.3",
     "karma-firefox-launcher": "^0.1.6",
     "karma-mocha": "^0.2.0",
     "karma-opera-launcher": "^0.3.0",
     "karma-phantomjs-launcher": "^0.2.1",
+    "karma-safari-launcher": "^0.1.1",
     "karma-selenium-webdriver-launcher": "0.0.3",
     "mocha": "^2.3.3",
+    "phantomjs": "^1.9.18",
     "selenium-webdriver": "^2.48.0",
     "sinon": "^1.17.2",
     "sinon-chai": "^2.8.0"
