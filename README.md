@@ -1,6 +1,7 @@
 # Backbone Stack (0.0.1)
 
 [View the changelog](https://bitbucket.org/kopfwelt/stack-backbone/src/master/CHANGELOG.md)
+[View the roadmap](https://bitbucket.org/kopfwelt/stack-backbone/src/master/CHANGELOG.md)
 
 Bitbuck repository: [Backbone stack](https://bitbucket.org/kopfwelt/stack-backbone)
 ***
